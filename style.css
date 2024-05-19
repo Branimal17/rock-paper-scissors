@@ -1,0 +1,51 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: navy;
+    height: 100vh;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    background-color: darkorange;
+    font-weight: bolder;
+    width: 200px;
+    height: 80px;
+    padding: 20px;
+    margin: 20px;
+    font-size: 30px;
+}
+
+.score-container {
+    color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+table {
+    font-size: 30px;
+    border-collapse: collapse;
+    text-align: center;
+    margin: 20px 0px;
+}
+
+th,
+td {
+    border: 5px solid darkorange;
+    padding: 8px;
+    margin: 0px;
+
+}
+
+p {
+    font-size: 40px;
+}

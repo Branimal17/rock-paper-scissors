@@ -1,7 +1,44 @@
-let humanScore = 0;
-let computerScore = 0;
+let humanScore = document.querySelector("#player-score");
+let computerScore = document.querySelector("#computer-score");
+let p = document.querySelector("p");
 
-playGame();
+const rockButton = document.querySelector("#rock");
+const paperButton = document.querySelector("#paper");
+const scissorsButton = document.querySelector("#scissors");
+const resetButton = document.querySelector("#reset-button");
+
+rockButton.addEventListener("click", (e) => {
+    let humanChoice = e.target.textContent.toLowerCase();
+    let computerChoice = getComputerChoice();
+    console.log(humanChoice);
+    console.log(computerChoice);
+    playRound(humanChoice, computerChoice);
+
+});
+
+paperButton.addEventListener("click", (e) => {
+    let humanChoice = e.target.textContent.toLowerCase();
+    let computerChoice = getComputerChoice();
+    console.log(humanChoice);
+    console.log(computerChoice);
+    playRound(humanChoice, computerChoice);
+});
+
+scissorsButton.addEventListener("click", (e) => {
+    let humanChoice = e.target.textContent.toLowerCase();
+    let computerChoice = getComputerChoice();
+    console.log(humanChoice);
+    console.log(computerChoice);
+    playRound(humanChoice, computerChoice);
+
+});
+
+resetButton.addEventListener( "click", () => {
+    humanScore.textContent = 0;
+    computerScore.textContent = 0;
+    p.textContent = "Pick a Selection";
+    p.style.color = "white";
+})
 
 function getComputerChoice() {
     let computerChoice;
@@ -16,27 +53,17 @@ function getComputerChoice() {
     else if (num <= 1) {
         computerChoice = "Scissors";
     }
-    console.log("Computer Chose: " + computerChoice);
     computerChoice = computerChoice.toLowerCase();
     return computerChoice
 }
 
-function getHumanChoice() {
-    let humanChoice = prompt("Please Choose 'Rock', 'Paper', or 'Scissors';")
-    humanChoice = humanChoice.toLowerCase();
-    while (humanChoice != "rock" && humanChoice != "paper" && humanChoice != "scissors") {
-        if (humanChoice == null) {
-            break;
-        }
-        humanChoice = prompt("Not a valid choice, Please Choose 'Rock', 'Paper', or 'Scissors'");
-    }
-    console.log("Player Chose: " + humanChoice);
-    return humanChoice
-}
+
 
 function playRound(humanChoice, computerChoice) {
+
     if (humanChoice == computerChoice) {
-        console.log("It's a tie!");
+        p.textContent = "It's a Tie";
+        p.style.color = "white";
     }
 
     else if (
@@ -44,18 +71,27 @@ function playRound(humanChoice, computerChoice) {
         (humanChoice == "scissors" && computerChoice == "paper") ||
         (humanChoice == "paper" && computerChoice == "rock")
     ) {
-        console.log("You Win the Round!!");
-        humanScore++;
+    
+        humanScore.textContent++;
+        p.textContent = "You Win the Round!";
+        p.style.color = "green";
     }
     else {
-        console.log("You Lose the Round");
-        computerScore++;
+        computerScore.textContent++;
+        p.textContent = "You Lost the Round";
+        p.style.color = "red";
     }
 
-    console.log(`Human score: ${humanScore}`);
-    console.log(`Computer score: ${computerScore}`);
+    if (humanScore.textContent == "5") {
+        humanScore.textContent = 0;
+        computerScore.textContent = 0;
+    }
+    else if (computerScore.textContent == "5") {
+        humanScore.textContent = 0;
+        computerScore.textContent = 0;
+    }
 }
-
+/*
 function playGame() {
 
     let roundCounter = 0;
@@ -77,3 +113,4 @@ function playGame() {
 
 }
 
+*/
